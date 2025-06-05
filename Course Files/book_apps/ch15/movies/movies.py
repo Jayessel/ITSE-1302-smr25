@@ -59,7 +59,7 @@ def main():
             print(f"{movie[0]} was added.\n")
         elif command == "del":
             number = get_movie_number(movies)
-            movie = db.delete_movie(movies, number-1)
+            movie = db.delete_movie(movies, number - 1)
             print(f"{movie[0]} was deleted.\n")
         elif command == "exit":
             break

@@ -1,5 +1,5 @@
 import db
-from business import Product, LineItem, Cart
+from business import LineItem, Cart
 
 products = db.get_products()
 product = products[1]

@@ -1,5 +1,5 @@
 import db
-from business import Product, LineItem, Cart
+from business import LineItem, Cart
 
 def show_title():
     print("The Shopping Cart program")

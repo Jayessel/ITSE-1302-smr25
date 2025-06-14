@@ -35,6 +35,3 @@ while entry == 'y':
     print()
 
 print("Bye!")
-
-
-

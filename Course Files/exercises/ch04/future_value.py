@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-        
+
+from validation import *
+
 def calculate_future_value(monthly_investment, yearly_interest, years):
     # convert yearly values to monthly values
     monthly_interest_rate = yearly_interest / 12 / 100
@@ -14,13 +16,29 @@ def calculate_future_value(monthly_investment, yearly_interest, years):
 
     return future_value
 
+# def get_float(message,low_range, high_range):
+#     while True:
+#         float_val = float(input(message))
+#         if low_range < float_val < high_range:
+#             break
+#         print(f"Entry must be greater than {low_range} and less than or equal to {high_range}.")
+#     return float_val
+#
+# def get_int(message,low_range, high_range):
+#     while True:
+#         int_val = int(input(message))
+#         if low_range < int_val < high_range:
+#             break
+#         print(f"Entry must be greater than {low_range} and less than or equal to {high_range}.")
+#     return int_val
+
 def main():
     choice = "y"
     while choice.lower() == "y":
         # get input from the user
-        monthly_investment = float(input("Enter monthly investment:\t"))
-        yearly_interest_rate = float(input("Enter yearly interest rate:\t"))
-        years = int(input("Enter number of years:\t\t"))
+        monthly_investment = get_float("Enter monthly investment:\t", 0, 1000)
+        yearly_interest_rate = get_float("Enter yearly interest rate:\t", 0, 15)
+        years = get_int("Enter number of years:\t\t",0,50)
 
         # get and display future value
         future_value = calculate_future_value(

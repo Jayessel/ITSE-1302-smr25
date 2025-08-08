@@ -85,15 +85,15 @@ def main():
         if x == 1:
             create_file()
             print('File created')
-        if x == 2:
+        elif x == 2:
             add_contact()
             print('Contact created')
-        if x == 3:
+        elif x == 3:
             list_contacts()
-        if x == 4:
+        elif x == 4:
             edit_contacts()  
             print('Contact changed')
-        if x == 5:
+        elif x == 5:
            break 
     print('Goodbye...')
     print('Completed by James Light')

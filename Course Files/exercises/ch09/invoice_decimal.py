@@ -2,6 +2,9 @@
 
 from decimal import Decimal
 from decimal import ROUND_HALF_UP
+import locale
+
+locale.setlocale(locale.LC_ALL, 'us')
 
 # display a title
 print("The Invoice program")
@@ -27,17 +30,25 @@ while choice == "y":
     discount = order_total * discount_percent
     discount = discount.quantize(Decimal("1.00"), ROUND_HALF_UP)                                
     subtotal = order_total - discount
+    shipping_cost = subtotal * Decimal(".085")
+    shipping_cost = shipping_cost.quantize(Decimal("1.00"),ROUND_HALF_UP)
     tax_percent = Decimal(".05")
     sales_tax = subtotal * tax_percent
     sales_tax = sales_tax.quantize(Decimal("1.00"), ROUND_HALF_UP)                                 
-    invoice_total = subtotal + sales_tax
-
+    invoice_total = subtotal + sales_tax + shipping_cost
+    
+    group = f"grouping=\'thousands_sep\'"
+    tf = '>10'
+    fo = '10,'
     # display the results
-    print(f"Order total:        {order_total:10,}")
-    print(f"Discount amount:    {discount:10,}")
-    print(f"Subtotal:           {subtotal:10,}")
-    print(f"Sales tax:          {sales_tax:10,}")
-    print(f"Invoice total:      {invoice_total:10,}")
+    # print(f"Order total:        {order_total:10,}")
+    print(f"Order total:        {locale.currency(order_total,group):{tf}}")
+    print(f"Discount amount:    {discount:{fo}}")
+    print(f"Subtotal:           {subtotal:{fo}}")
+    print(f"Shipping cost:      {shipping_cost:{fo}}")
+    print(f"Sales tax:          {sales_tax:{fo}}")
+    print(f"Invoice total:      {locale.currency(invoice_total,group):{tf}}")
+    # print(f"Invoice total:      {invoice_total:10,}")
     print()
 
     choice = input("Continue? (y/n): ")    
